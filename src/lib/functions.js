@@ -1,17 +1,5 @@
 const heartEmoji = "<:hpheart:1294208451739910195>";
 
-export async function joinVC(client, config) {
-  const guild = client.guilds.cache.get("1321723941202432040");
-  const voiceChannel = guild.channels.cache.get("1329298516341817387");
-  const connection = joinVoiceChannel({
-    channelId: voiceChannel.id,
-    guildId: guild.id,
-    adapterCreator: guild.voiceAdapterCreator,
-    selfDeaf: true,
-    selfMute: true,
-  });
-}
-
 export function snowflake(workerId = 1, processId = 1, increment = 0) {
   const timestamp = Date.now();
   const binaryTimestamp = (BigInt(timestamp) - BigInt(1420070400000))
@@ -32,20 +20,28 @@ export function snowflake(workerId = 1, processId = 1, increment = 0) {
   return snowflakeDecimal.toString();
 }
 
-export async function events(eventType, token, applicationId, channelId, guildId, messageId, customId) {
+export async function events(
+  eventType,
+  token,
+  applicationId,
+  channelId,
+  guildId,
+  messageId,
+  customId
+) {
   const sessions = {
-    "ramo": "e875f1377a89347673f7f87d72989f41",
-    "rose": "a0f532b2ac604f7eac2fffb964e12773",
-    "reward": "e875f1377a89347673f7f87d72989f41",
-    "coins": "cd10274ddfe320b23e4677cb8351d3a3",
-    "hearts": "cd10274ddfe320b23e4677cb8351d3a3",
-  }
-  
+    ramo: "e875f1377a89347673f7f87d72989f41",
+    rose: "a0f532b2ac604f7eac2fffb964e12773",
+    reward: "e875f1377a89347673f7f87d72989f41",
+    coins: "cd10274ddfe320b23e4677cb8351d3a3",
+    hearts: "cd10274ddfe320b23e4677cb8351d3a3",
+  };
+
   await fetch("https://discord.com/api/v9/interactions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: token
+      Authorization: token,
     },
     body: JSON.stringify({
       type: 3,
@@ -58,31 +54,30 @@ export async function events(eventType, token, applicationId, channelId, guildId
       session_id: sessions[eventType],
       data: {
         component_type: 2,
-        custom_id: customId
-      }
-    })
-  })
+        custom_id: customId,
+      },
+    }),
+  });
 }
 
 export async function autoFarm(channel) {
   try {
-    const buffs = ["asd", "p"]
+    const buffs = ["asd", "p"];
     channel.send({ content: "xuse 600" }).then(() =>
       setInterval(() => {
         message.channel.send({ content: "xuse 600" });
       }, 1815000)
     );
-    
-    setTimeout(() => channel.send('xuse 603'), 3000)
-    setTimeout(() => channel.send('xuse 604'), 6000)
-    setInterval(() => channel.send('xuse 603'), 3636000)
-    setInterval(() => channel.send('xuse 604'), 3690000)
 
-    setTimeout(() => channel.send('xmine 2'), 9000)
-    setTimeout(() => channel.send("xfish 2"), 12000)
+    setTimeout(() => channel.send("xuse 603"), 3000);
+    setTimeout(() => channel.send("xuse 604"), 6000);
+    setInterval(() => channel.send("xuse 603"), 3636000);
+    setInterval(() => channel.send("xuse 604"), 3690000);
+
+    setTimeout(() => channel.send("xmine 2"), 9000);
+    setTimeout(() => channel.send("xfish 2"), 12000);
     setInterval(() => channel.send("xmine 2"), 130200);
     setInterval(() => channel.send("xfish 2"), 135000);
-    
   } catch (error) {
     console.error(error.message);
   }
@@ -119,7 +114,7 @@ export async function autoPet(channel) {
       console.log(error.message);
     }
   } catch (error) {
-    console.error(error.message)
+    console.error(error.message);
   }
 }
 
