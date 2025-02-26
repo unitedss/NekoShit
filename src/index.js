@@ -49,7 +49,7 @@ client.on("messageCreate", async (message) => {
     if (message.embeds.length > 0 && message.channel.id === channelId) {
       const embed = message.embeds[0];
       if (embed.description?.includes("Regálale a Neko una")) {
-        console.log(cyanBright(underline("A rose event has been found!")));
+        console.log(cyanBright(underline("A rose event has been found!\n")));
         await events(
           "rose",
           token,
@@ -63,7 +63,9 @@ client.on("messageCreate", async (message) => {
         embed.description?.includes("ramo") &&
         embed.footer?.text?.includes(client.user.displayName)
       ) {
-        console.log(whiteBright(underline("A bouquet event has been found!")));
+        console.log(
+          whiteBright(underline("A bouquet event has been found!\n"))
+        );
         await handlerBouquet(
           token,
           message.author.id,
@@ -75,7 +77,9 @@ client.on("messageCreate", async (message) => {
         embed.description?.includes("secuencia") &&
         embed.footer?.text?.includes(client.user.displayName)
       ) {
-        console.log(blackBright(underline("A sequence event has been found!")));
+        console.log(
+          blackBright(underline("A sequence event has been found!\n"))
+        );
         await handlerSequence(
           embed.description,
           token,
@@ -85,7 +89,7 @@ client.on("messageCreate", async (message) => {
           message.id
         );
       } else if (embed.thumbnail && types[embed.thumbnail.url]) {
-        console.log(greenBright(underline("A server event has been found!")));
+        console.log(greenBright(underline("A server event has been found!\n")));
         await events(
           "reward",
           token,
@@ -99,7 +103,7 @@ client.on("messageCreate", async (message) => {
         embed.description?.includes("Conquista") &&
         embed.footer?.text?.includes(client.user.displayName)
       ) {
-        console.log(yellowBright(underline("A love event has been found!")));
+        console.log(yellowBright(underline("A love event has been found!\n")));
         await sendPositions(
           token,
           message.author.id,
@@ -110,7 +114,7 @@ client.on("messageCreate", async (message) => {
         );
       } else {
         console.log(
-          magentaBright(underline("A Valentine's Day event has been found!"))
+          magentaBright(underline("A Valentine's Day event has been found!\n"))
         );
         await handlerEventsLove(embed, client, token, message);
       }
