@@ -1,18 +1,9 @@
 const {
   events,
-  heartEvent,
   getHeartPosition,
   sendHeartUpdate,
 } = require("./functions");
 const messageHeartPositions = new Map();
-const heartEmoji = "<:hpheart:1294208451739910195>";
-
-const types = {
-  "https://cdn.nekotina.com/dreams/6f1d6008-b793-4191-b157-ca39e4a59e4b.png":
-    "random-event:seabox:1",
-  "https://cdn.nekotina.com/dreams/3459c42b-ee11-46d6-85e5-2c6f1b521ad0.png":
-    "random-event:guildbox:1",
-};
 
 const handlerBouquet = (token, authorId, channelId, guildId, messageId) => {
   const letters = ["L", "O", "V", "E"];
@@ -69,7 +60,6 @@ const handlerEventsLove = async (embed, client, token, message) => {
     Pitman: "random-event:pitman-attack",
   };
 
-  // Verificar si el título del embed es uno de los eventos
   const eventKey = Object.keys(eventMap).find((key) =>
     embed.description?.includes(key)
   );
@@ -78,7 +68,6 @@ const handlerEventsLove = async (embed, client, token, message) => {
     console.log(`Evento de ${eventKey} encontrado en actualización.`);
     const position = getHeartPosition(embed.description);
     if (position !== null) {
-      // Asegurarse de actualizar la posición del corazón correctamente
       messageHeartPositions.set(message.id, position);
       const h = position === 1 ? 0 : position === 2 ? 1 : 2;
       setTimeout(async () => {
