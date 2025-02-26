@@ -39,7 +39,6 @@ client.on("ready", async () => {
     `Logged in as ${redBright(underline(`${client.user.username}\n`))}`
   );
   const channel = client.channels.cache.get(channelId);
-
   await autoFarm(channel);
   setTimeout(() => autoPet(channel), 15000);
 });
