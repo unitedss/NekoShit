@@ -1,6 +1,6 @@
 # 🐱 NekoShit Selfbot
 
-![NekoShit Banner](./files.png)  
+![NekoShit Banner](./src/assets/files.png)  
 
 🚀 **NekoShit Selfbot** is a selfbot designed to manage all Nekotina events without manual intervention.
 
@@ -59,7 +59,7 @@ npm run dev
 
 ## 📷 Preview    
 
-*(Here you could add screenshots or GIFs showing the bot in action)*    
+![NekoShit Preview](./src/assets/avs.png)  
 
 ---
 

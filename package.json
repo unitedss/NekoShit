@@ -11,6 +11,7 @@
   "license": "ISC",
   "description": "Selfbot Nekotina Autofarm",
   "dependencies": {
+    "colorette": "^2.0.20",
     "discord.js-selfbot-v13": "^3.5.1",
     "dotenv": "^16.4.7"
   },

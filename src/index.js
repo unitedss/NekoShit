@@ -1,6 +1,6 @@
 const { Client, MessageEmbed, MessageActionRow } = require("discord.js-selfbot-v13");
 const client = new Client();
-const prefix = "$";
+const {redBright, whiteBright, red, blackBright, cyanBright, greenBright,underline, yellowBright, magentaBright} = require('colorette')
 const { config } = require("dotenv");
 const {
   events,
@@ -18,10 +18,11 @@ const types = {
 }
 
 client.on("ready", async () => {
-  console.log(`${client.user.username} is ready!`);
+  console.log(`Logged in as ${redBright(underline(`${client.user.username}\n`))}`);
   const channel = client.channels.cache.get('1342731383512104985')
-  await autoFarm(channel)
-  setTimeout(() => autoPet(channel), 15000)
+
+  // await autoFarm(channel)
+  // setTimeout(() => autoPet(channel), 15000)
   // await joinVC(client);
 });
 
@@ -30,17 +31,22 @@ client.on("messageCreate", async (message) => {
     if(message.embeds.length > 0 && message.channel.id === '1342731383512104985') {
       const embed = message.embeds[0]
       if(embed.description?.includes('Regálale a Neko una')) {
-        console.log('Evento rosa encontrada!')
+        console.log(cyanBright(underline('A rose event has been found!')))
         await events("rose", token, message.author.id, message.channel.id, message.guild.id, message.id, "random-event:rose:1")
       } else if(embed.description?.includes("ramo") && embed.footer?.text?.includes(client.user.displayName)) {
+        console.log(whiteBright(underline('A bouquet event has been found!')))
         await handlerBouquet(token, message.author.id, message.channel.id, message.guild.id, message.id)
       } else if(embed.description?.includes("secuencia") && embed.footer?.text?.includes(client.user.displayName)) {
+        console.log(blackBright(underline('A sequence event has been found!')))
         await handlerSequence(embed.description, token, message.author.id, message.channel.id, message.guild.id, message.id)
       } else if(embed.thumbnail && types[embed.thumbnail.url]) {
+        console.log(greenBright(underline('A server event has been found!')))
         await events("reward", token, message.author.id, message.channel.id, message.guild.id, message.id, types[embed.thumbnail.url])
       } else if (embed.description?.includes("Conquista") && embed.footer?.text?.includes(client.user.displayName)) { 
+        console.log(yellowBright(underline('A love event has been found!')))
         await sendPositions(token, message.author.id, message.channel.id, message.guild.id, message.id, embed.description)
       } else {
+        console.log(magentaBright(underline("A Valentine's Day event has been found!")))
         await handlerEventsLove(embed, client, token, message)
       }
     }
