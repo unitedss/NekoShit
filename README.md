@@ -67,7 +67,7 @@ npm run dev
 
 Contributions are welcome! If you have ideas or find bugs, open an issue or make a pull request.  
 
-📩 Contact: [acosarte / www.mdbcrew.lol]  
+📩 Contact: [ www.mdbcrew.lol ]  
 
 ---
 
