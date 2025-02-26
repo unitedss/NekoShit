@@ -59,7 +59,7 @@ npm run dev
 
 ## 📷 Preview    
 
-![NekoShit Preview](./avs.png)  
+![NekoShit Preview](./image.png)  
 
 ---
 
